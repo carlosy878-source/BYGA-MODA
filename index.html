@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BYGA | Moda y Perfumería</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#f4efec;
+color:#5c514d
+}
+
+.layout{display:flex}
+
+.sidebar{
+width:240px;
+background:#b9aea9;
+color:white;
+height:100vh;
+position:fixed;
+padding:30px 20px
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:2rem;
+letter-spacing:3px;
+margin-bottom:40px;
+opacity:0;
+animation:fadeSlide 1.2s forwards
+}
+
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
+padding:12px 0;
+margin:6px 0;
+font-size:0.95rem;
+transition:.3s
+}
+
+.sidebar a:hover{opacity:0.7;transform:translateX(6px)}
+
+.main{
+margin-left:240px;
+width:100%
+}
+
+.hero{
+height:85vh;
+background:linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)), url('hero-byga.jpg');
+background-size:cover;
+background-position:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:4rem;
+margin:0;
+letter-spacing:6px;
+color:#5c514d;
+animation:fadeSlide 1.6s ease forwards, glowText 4s ease-in-out infinite
+}
+
+.hero p{
+font-family:'Great Vibes',cursive;
+font-size:2rem;
+margin-top:10px;
+color:#7a6f6a;
+min-height:40px
+}
+
+.section{
+padding:70px 30px;
+max-width:1200px;
+margin:auto;
+opacity:0;
+transform:translateY(40px);
+transition:1s
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0)
+}
+
+.section h2{
+font-family:'Playfair Display',serif;
+font-size:2rem;
+margin-bottom:40px;
+text-align:center
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.06);
+transition:.4s;
+opacity:0;
+transform:translateY(30px)
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0)
+}
+
+.card:hover{transform:translateY(-10px) scale(1.02)}
+
+.card img{
+width:100%;
+border-radius:10px;
+transition:.4s
+}
+
+.card:hover img{transform:scale(1.05)}
+
+.badge{
+background:#e8e1dc;
+padding:4px 10px;
+border-radius:20px;
+font-size:.75rem
+}
+
+.price{
+margin:10px 0;
+font-weight:600;
+color:#8a7a74
+}
+
+button.buy{
+background:#8a7a74;
+border:none;
+color:white;
+padding:10px 16px;
+border-radius:8px;
+cursor:pointer;
+transition:.3s
+}
+
+button.buy:hover{opacity:0.85;transform:scale(1.05)}
+
+.vision{
+background:#ebe5e2;
+text-align:center;
+padding:80px 20px
+}
+
+.vision h2{
+font-family:'Playfair Display',serif;
+font-size:2.8rem
+}
+
+.vision p{
+max-width:700px;
+margin:auto;
+margin-top:20px;
+font-size:1rem
+}
+
+.bible{
+font-family:'Great Vibes',cursive;
+font-size:1.6rem;
+margin-top:20px;
+color:#bfae94
+}
+
+.reviews{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px
+}
+
+.review{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 10px 20px rgba(0,0,0,0.05);
+transition:.3s
+}
+
+.review:hover{transform:translateY(-6px)}
+
+footer{
+text-align:center;
+padding:30px;
+background:#b9aea9;
+color:white
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#8a7a74;
+color:white;
+padding:14px 20px;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 8px 18px rgba(0,0,0,0.2);
+transition:.3s
+}
+
+.whatsapp:hover{transform:scale(1.08)}
+
+@media(max-width:900px){
+.sidebar{position:relative;width:100%;height:auto}
+.main{margin-left:0}
+.layout{flex-direction:column}
+.hero h1{font-size:2.5rem}
+}
+
+@keyframes fadeSlide{
+0%{opacity:0;transform:translateY(30px)}
+100%{opacity:1;transform:translateY(0)}
+}
+
+@keyframes glowText{
+0%{text-shadow:0 0 0 rgba(0,0,0,0)}
+50%{text-shadow:0 0 18px rgba(191,174,148,0.6)}
+100%{text-shadow:0 0 0 rgba(0,0,0,0)}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+<div class="sidebar">
+<div class="logo">BYGA</div>
+
+<a href="#inicio">Inicio</a>
+<a href="#mujer">Ropa Mujer</a>
+<a href="#varon">Ropa Varón</a>
+<a href="#perfumes">Perfumería</a>
+<a href="#accesorios">Accesorios</a>
+<a href="#reviews">Clientes</a>
+<a href="#contacto">Contacto</a>
+
+</div>
+
+<div class="main">
+
+<section class="hero" id="inicio">
+<h1>BYGA</h1>
+<p id="slogan"></p>
+</section>
+
+<section class="vision section">
+<h2>Nuestra Visión</h2>
+<p>Permitir demostrar nuestra identidad y fe a través de nuestra vestimenta brindando comodidad, elegancia, feminidad y estilo.</p>
+<div class="bible">Proverbios 15:13</div>
+</section>
+
+<section class="section" id="mujer">
+<h2>Ropa de Mujer</h2>
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1520975922284-8b456906c813">
+<h3>Vestido elegante</h3>
+<span class="badge">Nuevo</span>
+<div class="price">Consultar</div>
+<button class="buy" onclick="consultar('Vestido elegante')">Consultar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e">
+<h3>Blusa formal</h3>
+<span class="badge">Disponible</span>
+<div class="price">Consultar</div>
+<button class="buy" onclick="consultar('Blusa formal')">Consultar</button>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="varon">
+<h2>Ropa de Varón</h2>
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7">
+<h3>Camisa formal</h3>
+<span class="badge">Disponible</span>
+<div class="price">Consultar</div>
+<button class="buy" onclick="consultar('Camisa formal')">Consultar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59">
+<h3>Pantalón de vestir</h3>
+<span class="badge">Disponible</span>
+<div class="price">Consultar</div>
+<button class="buy" onclick="consultar('Pantalón de vestir')">Consultar</button>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="perfumes">
+<h2>Perfumería</h2>
+<div class="products">
+
+<div class="card">
+<img src="magnat-esika.jpg">
+<h3>Magnat – Ésika</h3>
+<span class="badge">Disponible</span>
+<div class="price">S/ 55.00</div>
+<p>Fragancia amaderada, aromática y fresca con notas cítricas, especias, floral y musk.</p>
+<button class="buy" onclick="consultar('Perfume Magnat de Ésika 90ml')">Consultar</button>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="accesorios">
+<h2>Accesorios</h2>
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+<h3>Carteras</h3>
+<span class="badge">Disponible</span>
+<div class="price">Consultar</div>
+<button class="buy" onclick="consultar('Carteras')">Consultar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083">
+<h3>Relojes</h3>
+<span class="badge">Disponible</span>
+<div class="price">Consultar</div>
+<button class="buy" onclick="consultar('Relojes')">Consultar</button>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="reviews">
+<h2>Opiniones de Clientes</h2>
+<div class="reviews">
+<div class="review">⭐⭐⭐⭐⭐<p>Excelente atención y ropa de muy buena calidad.</p></div>
+<div class="review">⭐⭐⭐⭐⭐<p>Los perfumes llegaron originales y muy rápido.</p></div>
+<div class="review">⭐⭐⭐⭐⭐<p>Muy recomendable, volveré a comprar.</p></div>
+</div>
+</section>
+
+<section class="section" id="contacto">
+<h2>Contacto</h2>
+<p>WhatsApp: +51 928 826 389</p>
+<button class="buy" onclick="whatsapp()">Escribir por WhatsApp</button>
+</section>
+
+<footer>
+<p>© 2026 BYGA Moda</p>
+</footer>
+
+</div>
+
+</div>
+
+<div class="whatsapp" onclick="whatsapp()">WhatsApp</div>
+
+<script>
+
+function consultar(producto){
+let numero="51928826389";
+let mensaje="Hola, estoy interesado en "+producto+" que vi en la página BYGA.";
+window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensaje),'_blank');
+}
+
+function whatsapp(){
+let numero="51928826389";
+let mensaje="Hola, quisiera información sobre los productos de BYGA.";
+window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensaje),'_blank');
+}
+
+const texto="Sencillez que hermosea";
+let i=0;
+function escribir(){
+if(i<texto.length){
+document.getElementById("slogan").innerHTML+=texto.charAt(i);
+i++;
+setTimeout(escribir,80);
+}
+}
+escribir();
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll(".section,.card").forEach(el=>observer.observe(el));
+
+</script>
+
+</body>
+</html>
